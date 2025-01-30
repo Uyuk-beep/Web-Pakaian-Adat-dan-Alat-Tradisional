@@ -1,0 +1,273 @@
+/* Basic Reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	text-decoration: none;
+	/* border: 1px solid blue; */
+}
+
+/* Google Font */
+.poppins {
+	font-family: "Poppins", sans-serif;
+}
+
+body {
+	overflow-x: hidden;
+	letter-spacing: 2px;
+}
+
+/* Setting Grid Container */
+.container {
+	display: grid;
+	grid-template-areas:
+		"navbar navbar"
+		"main main";
+	grid-template-rows: 80px calc(100vh - 80px + 350px);
+}
+
+/*  - - - - - - - - - - HALAMAN NAVBAR - - - - - - - - - - */
+.navbar {
+	grid-area: navbar;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 20px;
+	background: linear-gradient(90deg, #000000, #666666);
+	position: fixed;
+	width: 100vw;
+	z-index: 1;
+}
+
+.navbar h1 {
+	margin-left: 14px;
+	font-size: 16px;
+	font-weight: 800; /* Extra bold */
+	font-style: italic;
+	letter-spacing: 4px;
+	background: linear-gradient(90deg, #ff0004, #ebff00, #ffaa06);
+
+	/* memastikan bahwa gradasi hanya mempengaruhi area teks. */
+	-webkit-background-clip: text;
+
+	/* membuat teks transparan sehingga latar belakang gradien muncul pada teks. */
+	-webkit-text-fill-color: transparent;
+}
+
+.navbar .menu {
+	display: flex;
+	gap: 60px;
+}
+
+.navbar .menu .admin {
+	display: flex;
+	align-items: center;
+	height: 60px;
+	color: white;
+	text-decoration: none;
+	padding: 5px 30px;
+	font-size: 16px;
+	letter-spacing: 2px;
+	font-weight: 600; /* Extra boldv*/
+	font-style: italic;
+	border-radius: 24px;
+	cursor: pointer;
+}
+
+.navbar .menu .admin:hover,
+.navbar .menu .active {
+	background-color: #d9d9d9;
+	color: #000000;
+}
+
+/*  - - - - - - - - - - HALAMAN MAIN - - - - - - - - - - */
+
+.main {
+	grid-area: main;
+	background-color: #d9d9d9;
+	padding: 20px;
+	width: 100vw;
+	padding: 20px 30px;
+}
+
+/* Kelola Admin */
+.main .kelola-admin-atau-logout.hide {
+	display: none;
+}
+
+.main .kelola-admin-atau-logout {
+	position: absolute;
+	display: flex;
+	background: linear-gradient(to bottom, #000000, #666666);
+	right: 10px;
+	top: 0;
+	margin-top: 90px;
+	column-gap: 20px;
+	border-radius: 10px;
+	padding: 5px 10px;
+	margin-right: 20px;
+}
+
+.main .kelola-admin-atau-logout a {
+	color: white;
+	font-style: italic;
+	padding: 10px 15px;
+	border-radius: 10px;
+}
+.main .kelola-admin-atau-logout a:hover {
+	background-color: #d9d9d9;
+	color: #000000;
+}
+
+.main .card {
+	background-color: white;
+	padding: 40px 60px;
+	border-radius: 15px;
+	height: 650px;
+	box-shadow: 0px 0px 5px 0 rgba(0, 0, 0, 0.4);
+}
+
+.main .card a[class="back"] {
+	position: absolute;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+
+.main .card a[class="back"] i {
+	font-size: 48px;
+	background-color: white;
+	color: black;
+}
+
+.main .card h1 {
+	text-align: center;
+}
+
+.main .card .info {
+	display: flex;
+	column-gap: 60px;
+	height: calc(100vh - 280px);
+}
+
+.main .card .info .border-img {
+	background-color: white;
+	width: 300px;
+	height: 340px;
+	border-radius: 30px;
+}
+
+img {
+	width: 300px;
+	height: 340px;
+	border-radius: 30px;
+}
+
+.main .card .info .border-img .image-gallery {
+	display: flex; /* Gunakan flex untuk tata letak horizontal */
+	gap: 10px; /* Beri jarak antar gambar */
+	justify-content: start; /* Ratakan ke tengah secara horizontal */
+	align-items: center; /* Ratakan secara vertikal */
+	padding: 20px 0; /* Tambahkan jarak atas dan bawah */
+}
+
+.main .card .info .border-img .image-gallery img {
+	width: 80px; /* Atur ukuran gambar */
+	height: auto; /* Pastikan proporsi gambar tetap */
+	border-radius: 10px; /* Tambahkan sudut membulat */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan */
+	border: 2px solid #ccc; /* Beri bingkai */
+	cursor: pointer; /* Tambahkan interaksi visual */
+	transition: transform 0.2s ease; /* Animasi */
+}
+
+.main .card .info .border-img .image-gallery img:hover {
+	transform: scale(1.1); /* Perbesar gambar saat dihover */
+	border-color: #333; /* Ubah warna bingkai saat dihover */
+}
+
+.main .card .info .border-img .image-gallery video {
+	width: 150px; /* Ukuran seragam untuk gambar dan video */
+	height: 85px;
+	border-radius: 10px; /* Sudut membulat */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan */
+	border: 2px solid #ccc; /* Bingkai */
+	cursor: pointer; /* Tambahkan interaksi visual */
+	transition: transform 0.2s ease; /* Animasi */
+}
+
+.main .card .info .border-img .image-gallery video {
+	background-color: #000; /* Latar belakang hitam untuk video */
+}
+
+.main .card .info .border-img .image-gallery video:hover {
+	transform: scale(1.1); /* Perbesar gambar saat dihover */
+	border-color: #333; /* Ubah warna bingkai saat dihover */
+}
+
+.main .card .info p {
+	text-align: justify;
+	color: #333;
+	font-size: 16px;
+	line-height: 2;
+	height: 100%;
+	padding: 0 20px;
+	overflow-y: auto;
+}
+
+#video-overlay.hidden {
+	display: none;
+}
+
+#video-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.8);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
+}
+
+.video-container {
+	position: relative;
+	max-width: 80%;
+	max-height: 80%;
+}
+
+#overlay-video {
+	width: 100%;
+	height: auto;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#close-overlay {
+	position: absolute;
+	top: -30px;
+	right: 0;
+	font-size: 30px;
+	color: white;
+	cursor: pointer;
+	border: none;
+	outline: none;
+	z-index: 1100;
+	width: 40px;
+	height: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 10px;
+}
+
+#close-overlay:hover {
+	transform: scale(1.15);
+}
+
+#video-overlay video {
+	width: 80vw; /* Ukuran seragam untuk gambar dan video */
+	height: 80vh;
+}

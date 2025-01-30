@@ -1,0 +1,138 @@
+/* Basic Reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	/* border: 1px solid black; */
+}
+
+body {
+	display: flex;
+	font-family: "Poppins", sans-serif;
+	align-items: center;
+	height: 100vh;
+	background-color: white;
+	letter-spacing: 2px;
+	overflow-y: hidden;
+}
+
+.left,
+.right {
+	height: 100vh;
+}
+
+.left {
+	width: 360px;
+}
+
+.left h2 {
+	margin-top: 40px;
+	font-size: 24px; /* Sesuaikan ukuran font sesuai kebutuhan */
+	font-weight: bold;
+	font-style: italic;
+	background: linear-gradient(to right, #ff0000, #8b008b, #0000ff);
+
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+
+	text-transform: uppercase;
+	text-align: center;
+	cursor: pointer;
+}
+
+.left .login-box {
+	margin-top: 80px;
+}
+
+.left .login-box h3 {
+	font-size: 18px;
+	margin-bottom: 40px;
+	text-align: center;
+}
+
+.left .login-box input,
+.left .login-box button {
+    margin-left: 50px;
+}
+
+
+.left .login-box input {
+	display: block;
+	width: 100%;
+	max-width: 250px;
+	padding: 10px;
+	margin-bottom: 15px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+}
+
+.left .login-box button {
+	width: 100%;
+	max-width: 250px;
+	padding: 12px;
+	background-color: #ff9900;
+	border: none;
+	border-radius: 5px;
+	color: white;
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: 900;
+}
+
+.left .login-box label {
+    display: flex;
+    font-size: 10px;
+    column-gap: 8px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.left .login-box label input {
+    width: 20px;
+    height: 20px;
+}
+
+.left .login-box label span {
+    width: 170px;
+    margin-left: 1px;
+}
+
+.left .login-box input[type="checkbox"] {
+    margin: 0;
+    padding: 0;
+}
+
+
+.left .login-box button:hover {
+	background-color: #e68a00;
+}
+
+.right {
+	background-color: #d9d9d9;
+	width: calc(100vw - 360px); /* Mengatur lebar sesuai dengan div kiri */
+    height: 100%;
+}
+
+/* .right .image-placeholder {
+	width: calc(100vw - 360px);
+	height: 100%;
+}
+
+.right .image-placeholder img {
+	width: 100%;
+	height: 100%;
+} */
+
+.right .image-placeholder {
+    width: 100%;   /* Memastikan lebar sesuai dengan kontainer */
+    height: 100%;  /* Memastikan tinggi sesuai dengan kontainer */
+    overflow: hidden; /* Menjaga agar tidak ada elemen yang keluar */
+}
+
+.right .image-placeholder img {
+    width: 100%;   /* Gambar mengisi lebar penuh kontainer */
+    height: 100%;  /* Gambar mengisi tinggi penuh kontainer */
+    object-fit: contain; /* Menjaga gambar tetap utuh dan tidak terpotong */
+}

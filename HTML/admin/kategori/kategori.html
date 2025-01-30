@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Adat Kalteng</title>
+
+		<!-- Link CSS -->
+		<link rel="stylesheet" href="/CSS/admin/kategori/kategori.css" />
+
+		<!-- Font Awesome -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+			integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+
+		<!-- Google Font -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+
+	<body>
+		<div class="container poppins">
+			<div class="navbar">
+				<h1>ADAT KALTENG</h1>
+				<div class="menu">
+					<div class="admin">
+						<i class="fa-solid fa-user"></i>
+						&nbsp;&nbsp;Admin
+					</div>
+				</div>
+			</div>
+			<div class="sidebar">
+				<div class="menu">
+					<a href="../beranda/index.html">Beranda</a>
+					<a href="../tentang_kami/tentang_kami.html">Tentang Kami</a>
+					<a href="kategori.html" class="active">Kategori</a>
+					<a href="../blog/blog.html">Blog</a>
+				</div>
+			</div>
+			<div class="main">
+				<div class="kelola-admin-atau-logout hide">
+					<a href="../kelola_admin/kelola_admin.html">Kelola Admin</a>
+					<a href="/HTML/pengunjung/index.html">Logout</a>
+				</div>
+
+				<div class="card">
+					<div class="judul-dan-tambah">
+						<h2>Kelola Katgeori</h2>
+						<a href="tambah_kategori.html"
+							>Tambah <i class="fa-solid fa-circle-plus"></i
+						></a>
+					</div>
+					<div class="border">
+						<table>
+							<tr>
+								<th>Nomor</th>
+								<th>Kategori</th>
+								<th>Aksi</th>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>Tenun</td>
+								<td>
+									<a href="edit_kategori.html">
+										Ubah <i class="fa-solid fa-pen"></i>
+									</a>
+									&nbsp;
+									<a href="hapus_kategori.html">
+										Hapus <i class="fa-solid fa-trash"></i>
+									</a>
+								</td>
+							</tr>
+						
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+	<script src="/JS/kelola_admin.js"></script>
+</html>

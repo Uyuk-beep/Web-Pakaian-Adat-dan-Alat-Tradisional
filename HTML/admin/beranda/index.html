@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Adat Kalteng</title>
+
+		<!-- Link CSS -->
+		<link rel="stylesheet" href="/CSS/admin/beranda/index.css" />
+
+		<!-- Font Awesome -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+			integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+
+		<!-- Google Font -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<div class="container poppins">
+			<div class="navbar">
+				<h1>ADAT KALTENG</h1>
+				<div class="menu">
+					<div class="admin">
+						<i class="fa-solid fa-user"></i>
+						&nbsp;&nbsp;Admin
+					</div>
+				</div>
+			</div>
+			<div class="sidebar">
+				<div class="menu">
+					<a href="index.html" class="active">Beranda</a>
+					<a href="../tentang_kami/tentang_kami.html">Tentang Kami</a>
+					<a href="../kategori/kategori.html">Kategori</a>
+					<a href="../blog/blog.html">Blog</a>
+				</div>
+			</div>
+			<div class="main">
+				<div class="kelola-admin-atau-logout hide">
+					<a href="../kelola_admin/kelola_admin.html">Kelola Admin</a>
+					<!-- <a href="/HTML/pengunjung/index.html">Logout</a> -->
+					<form action="" method="get">
+						<button name="logout">Logout</button>
+					</form>
+				</div>
+
+				<!-- Kategori -->
+				<select class="kategori">
+					<option value="all">-- Semua Produk --</option>
+					<!-- Tambahkan kategori lainnya sesuai kebutuhan -->
+				</select>
+
+				<!-- Product -->
+				<div class="product">
+					<a class="product-card" href="informasi_produk.html">
+						<div class="icon">
+							<form action="edit_produk.html" method="get">
+								<button><i class="fa-solid fa-pen"></i></button>
+							</form>
+							<form action="" method="get">
+								<button>
+									<i class="fa-solid fa-trash"></i>
+								</button>
+							</form>
+						</div>
+						<img
+							src="https://via.placeholder.com/100"
+							alt="Product Image"
+						/>
+						<p>Nama Produk</p>
+					</a>
+				</div>
+
+				<div class="button-add-produk">
+					<a href="tambah_produk.html"
+						><i class="fa-solid fa-circle-plus"></i
+					></a>
+				</div>
+			</div>
+		</div>
+	</body>
+
+	<script src="/JS/kelola_admin.js"></script>
+</html>

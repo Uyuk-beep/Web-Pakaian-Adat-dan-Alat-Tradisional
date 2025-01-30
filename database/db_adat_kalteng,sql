@@ -1,0 +1,541 @@
+-- Active: 1698482339185@@localhost@3306@db_adat_kalteng
+DROP DATABASE db_adat_kalteng;
+
+# Membuat Database
+CREATE DATABASE db_adat_kalteng;
+
+# Memilih Database
+USE db_adat_kalteng;
+
+# Membuat tabel tb_admin
+CREATE TABLE tb_admin (
+    id_admin  INT AUTO_INCREMENT PRIMARY KEY,  
+    username  VARCHAR(50),
+    password  VARCHAR(50),
+    nama      VARCHAR(50),
+    no_tlp    VARCHAR(12),
+    alamat    VARCHAR(50),
+    gambar    TEXT
+);
+
+# Membuat tabel tb_kategori
+CREATE TABLE tb_kategori (
+    id_kategori   INT AUTO_INCREMENT PRIMARY KEY,
+    kategori      VARCHAR(50)
+);
+
+# Membuat tabel tb_produk
+-- CREATE TABLE tb_produk (
+--     id_produk     INT AUTO_INCREMENT PRIMARY KEY,
+--     nama_produk   VARCHAR(50),
+--     gambar_produk TEXT,
+--     id_kategori   INT,
+--     FOREIGN KEY (id_kategori) REFERENCES tb_kategori(id_kategori)
+-- );
+
+CREATE TABLE tb_produk (
+    id_produk     INT AUTO_INCREMENT PRIMARY KEY,
+    nama_produk   VARCHAR(50),
+    gambar_produk TEXT,
+    video_produk  TEXT,
+    id_kategori   INT,
+    FOREIGN KEY (id_kategori) REFERENCES tb_kategori(id_kategori)
+);
+
+# Membuat tabel tb_detail_produk
+CREATE TABLE tb_detail_produk (
+    id_detail_produk    INT AUTO_INCREMENT PRIMARY KEY,
+    deskripsi           TEXT,
+    id_produk           INT,
+    FOREIGN KEY (id_produk) REFERENCES tb_produk(id_produk)
+);
+
+# Membuat tabel tb_blog
+-- CREATE TABLE tb_blog (
+--     judul           TEXT,
+--     deskripsi_blog  TEXT,
+--     gambar_blog     TEXT
+-- );
+CREATE TABLE tb_blog (
+    id_blog         INT AUTO_INCREMENT PRIMARY KEY, 
+    judul           VARCHAR(255) NOT NULL,      
+    deskripsi_blog  TEXT NOT NULL,   
+    penulis         VARCHAR(50) NOT NULL,       
+    tanggal         DATE NOT NULL,             
+    gambar_blog     TEXT NOT NULL
+);
+
+# Membuat tabel tb_kategori
+CREATE TABLE tb_tentang_kami (
+    judul                   TEXT,
+    deskripsi_tentang_kami  TEXT
+);
+
+
+
+INSERT INTO tb_admin (username, password, nama, no_tlp, alamat, gambar) VALUES 
+	('Thomas', 'Thomas06', 'Thomas Zugildo Magnus', '081258703821', 'Jl. Menteng 1', 'ildo.jpeg'),
+	('Yukandri', 'Yukandri06', 'Yukandri', '081258721601', 'Jl. Keminting', 'yukandri.png'),
+	('Marvin', 'Marvin06', 'Marvin Donald R. A.', '081251963651', 'Jl. Haji Bolot', 'marvin.jpeg'),
+	('Yulius', 'Yulius06', 'Yulius Aldi', '0814819662099', 'Jl. Lingkar Luar', 'aldi.png');
+
+INSERT INTO tb_kategori (kategori) VALUES 
+    ('Alat - Alat Musik'), 
+    ('Alat - Senjata'),
+    ('Alat - Perisai'),
+    ('Alat - Perahu'),
+    ('Alat - Pertanian'),
+    ('Pakaian Adat - Bahan Kulit Kayu'),
+    ('Pakaian Adat - Bahan Potongan Besi'),
+    ('Pakaian Adat - Bahan Serat'),
+    ('Pakaian Adat - Bahan Tenun');
+
+-- INSERT INTO tb_produk (nama_produk, gambar_produk, id_kategori) VALUES 
+--     ('Kecapi', 'kecapi.jpg', 1),
+--     ('Suling Balawung', 'suling_balawung.jpg', 1),
+--     ('Kangkanong', 'kangkanong.jpg', 1),
+--     ('Garantung', 'garantung.jpg', 1),
+--     ('Gandang Tatau', 'gandang_tatau.jpg', 1),
+--     ('Katambung', 'katambung.jpg', 1),
+--     ('Utar dan Kipas Parei', 'utar_dan_kipas_parei.jpg', 5),
+--     ('Gamang', 'gamang.jpg', 1),
+--     ('Suling Bahalang', 'suling_bahalang.jpg', 1),
+-- 	('Japen', 'japen.jpg', 1),
+-- 	('Kangkanung', 'kangkanung.jpg', 1),
+-- 	('Mandau', 'mandau.jpg', 2),
+-- 	('Talawang', 'talawang.jpg', 3),
+-- 	('Sumpit', 'sumpit.jpg', 2),
+-- 	('Serupai', 'serupai.jpg', 1),
+-- 	('Lunju', 'lunju.jpg', 2),
+-- 	('Beliung', 'beliung.jpg', 5),
+-- 	('Duhung', 'duhung.jpg', 2),
+-- 	('Salung', 'salung.jpg', 1),
+-- 	('Jukung', 'jukung.jpg', 4),
+-- 	('Sangkarut', 'sangkarut.jpg', 8),
+-- 	('Pawang', 'pawang.jpg', 8),
+-- 	('Tenunan', 'tenunan.jpg', 9),
+-- 	('Berantai', 'berantai.jpg', 7),
+-- 	('Upak Nyamu', 'upak_nyamu.jpg', 6);
+INSERT INTO tb_produk (nama_produk, gambar_produk, video_produk, id_kategori) VALUES 
+    ('Kecapi', 'kecapi.jpg', 'Kecapi.mp4', 1),
+    ('Suling Balawung', 'suling_balawung.jpg', 'Suling Balawung.mp4', 1),
+    ('Kangkanong', 'kangkanong.jpg', 'Kangkanong.mp4', 1),
+    ('Garantung', 'garantung.jpg', 'garantung.mp4', 1),
+    ('Gandang Tatau', 'gandang_tatau.jpg', 'gandang tatau.mp4', 1),
+    ('Katambung', 'katambung.jpg', 'katambung.mp4', 1),
+    ('Utar dan Kipas Parei', 'utar_dan_kipas_parei.jpg', 'Kecapi.mp4', 5),
+    ('Gamang', 'gamang.jpg', 'gamang.mp4', 1),
+    ('Suling Bahalang', 'suling_bahalang.jpg', 'Suling Bahalang.mp4', 1),
+	('Japen', 'japen.jpg', 'Japen.mp4', 1),
+	('Kangkanung', 'kangkanung.jpg', 'kangkanung.mp4', 1),
+	('Mandau', 'mandau.jpg', 'mandau.mp4', 2),
+	('Talawang', 'talawang.jpg', 'Talawang.mp4', 3),
+	('Sumpit', 'sumpit.jpg', 'Sumpit.mp4',2),
+	('Serupai', 'serupai.jpg', 'Kecapi.mp4', 1),
+	('Lunju', 'lunju.jpg', 'lunju.mp4', 2),
+	('Beliung', 'beliung.jpg', 'beliung.mp4', 5),
+	('Duhung', 'duhung.jpg', 'duhung.mp4', 2),
+	('Salung', 'salung.jpg', 'salung.mp4', 1),
+	('Jukung', 'jukung.jpg', 'jukung.mp4', 4),
+	('Sangkarut', 'sangkarut.jpg', 'sangkarut.mp4', 8),
+	('Pawang', 'pawang.jpg', 'pawang.mp4', 8),
+	('Tenunan', 'tenunan.jpg', 'Kecapi.mp4', 9),
+	('Berantai', 'berantai.jpg', 'Kecapi.mp4', 7),
+	('Upak Nyamu', 'upak_nyamu.jpg', 'upak nyamu.mp4', 6);
+
+    
+INSERT INTO tb_detail_produk (deskripsi, id_produk) VALUES 
+    ('Kecapi adalah alat musik petik tradisional yang berasal dari Kalimantan Tengah, khususnya dari Suku Dayak Ngaju. Alat musik ini terbuat dari kayu ringan yang biasanya diambil dari pohon hanjalutung, kayu lokal yang terkenal karena kekuatannya dan kemudahan dalam pembentukan. Dawai kacapi dapat terdiri dari dua atau tiga tali yang terbuat dari kawat atau bahan nilon.
+
+Kacapi memiliki bentuk yang sangat unik, menyerupai burung enggang, yang dianggap sakral oleh masyarakat Dayak Kalimantan Tengah. Burung enggang memiliki makna spiritual dan simbolik dalam budaya Dayak, sehingga bentuk kacapi mencerminkan penghormatan terhadap nilai-nilai budaya tersebut. Alat musik ini biasa dimainkan dalam acara adat, seperti menyambut tamu kehormatan, atau untuk mengiringi lagu-lagu tradisional yang sarat akan makna budaya dan spiritual.
+', 1),
+    ('Suling Balawung adalah alat musik tradisional tiup khas dari suku Dayak Ngaju di Kalimantan Tengah. Alat musik ini terbuat dari bambu kecil yang ringan dan mudah diolah, biasanya bambu lokal yang memiliki serat halus untuk menghasilkan nada yang bersih. Suling ini memiliki lima lubang nada di bagian bawah dan satu lubang tiup di bagian atas.
+
+Dalam tradisi Dayak Ngaju, Suling Balawung sering dimainkan oleh kaum perempuan, baik untuk hiburan sehari-hari maupun sebagai bagian dari upacara adat atau ritual keagamaan. Suara lembut dan mendayu yang dihasilkan mencerminkan kehalusan dan kedalaman jiwa budaya Dayak, sekaligus memperkuat nuansa sakral dalam berbagai kegiatan adat.
+', 2),
+    ('Kangkanong adalah alat musik tradisional khas suku Dayak Ngaju di Kalimantan Tengah. Alat musik ini menyerupai gong kecil, mirip dengan kenong dalam gamelan Jawa. Kangkanong biasanya dibuat dari logam seperti kuningan atau perunggu, yang dipilih karena kemampuannya menghasilkan suara resonansi yang nyaring namun tetap lembut.
+
+Alat musik ini dimainkan dengan cara dipukul menggunakan pemukul khusus, yang bagian ujungnya dilapisi dengan bahan lunak seperti kain atau karet untuk menghasilkan suara yang harmonis. Kangkanong memiliki fungsi penting dalam upacara adat, ritual keagamaan, dan mengiringi tarian tradisional Dayak Ngaju. Sebagai bagian dari ensambel musik, kangkanong berperan dalam menjaga ritme dan melodi, sehingga menjadi elemen penting dalam harmoni musik tradisional Dayak.
+', 3),
+    ('Garantung adalah alat musik tradisional yang berasal dari Kalimantan Tengah, khususnya dari budaya Suku Dayak Ngaju. Alat musik ini berbentuk seperti gong kecil dengan permukaan cembung di bagian tengahnya, menyerupai kenong dalam gamelan Jawa. Garantung memiliki peran penting dalam berbagai kegiatan adat dan budaya, termasuk upacara adat, ritual keagamaan, serta sebagai pengiring tarian tradisional masyarakat Dayak.
+
+Garantung biasanya dibuat dari bahan logam seperti kuningan atau perunggu, yang dipilih karena sifatnya yang mampu menghasilkan suara resonansi yang khas dan tahan lama. Dalam penggunaannya, alat ini dipukul dengan alat pemukul khusus, yang bagian ujungnya sering dilapisi dengan bahan lunak seperti kain atau karet untuk menciptakan suara yang lembut namun nyaring. Suara yang dihasilkan oleh garantung berperan dalam menjaga ritme serta harmoni dalam ensambel musik tradisional Dayak. Selain fungsinya dalam musik, garantung juga memiliki nilai simbolik, sering dianggap sebagai bagian penting dari warisan budaya yang memperkuat identitas Dayak Ngaju.
+', 4),
+    ('Gandang Tatau adalah alat musik tradisional yang berasal dari Suku Dayak Ngaju di Kalimantan Tengah. Alat musik ini merupakan jenis gendang besar yang digunakan dalam berbagai upacara adat, seperti Tiwah, Bantang, dan Wara, atau sebagai alat pengiring tarian tradisional.
+
+Gandang Tatau dibuat menggunakan bahan utama kayu ulin atau kayu kuat lainnya untuk bagian badan gendang, sementara membrannya terbuat dari kulit hewan, seperti kulit sapi, rusa, atau ular piton. Kulit ini direntangkan dan diikat menggunakan tali rotan untuk menghasilkan suara resonansi khas. Gandang Tatau memiliki nilai simbolis dan menjadi elemen penting dalam ritual adat Dayak Ngaju, melambangkan keharmonisan dan spiritualitas masyarakatnya.
+', 5),
+    ('Katambung adalah alat musik perkusi sejenis kendang yang berasal dari suku Dayak Ngaju di Kalimantan Tengah. Alat musik ini diperkirakan sudah ada sejak sebelum abad ke-10 Masehi. Katambung memiliki panjang sekitar 75 cm dengan bentuk unik menyerupai labu siam atau labu air. Alat musik ini biasanya dibuat dari kayu ulin, kayu keras khas Kalimantan yang terkenal karena daya tahannya yang tinggi dan kemampuannya menghasilkan resonansi suara yang baik. Bagian membrannya terbuat dari kulit hewan, seperti kambing atau kerbau, yang direntangkan di salah satu sisinya. Katambung digunakan dalam upacara keagamaan Kaharingan, seperti upacara gawi belom untuk penyambutan tamu, dan gawi matey pada rangkaian upacara Tiwah, termasuk balian ngarahang tulang, balian tantulak, dan balian untung.', 6),
+    ('Utar atau Kipas Paréi adalah alat tradisional yang digunakan oleh masyarakat Dayak Ngaju di Kalimantan Tengah untuk memisahkan padi dari kulitnya. Alat ini merupakan simbol kearifan lokal yang memadukan fungsi praktis dan tradisi dalam kegiatan pertanian masyarakat setempat. Terbuat dari bahan utama kayu atau bambu yang membentuk kerangka, alat ini dilengkapi dengan kipas putar yang dioperasikan melalui tuas yang terbuat dari logam.
+
+Dalam penggunaannya, setelah padi dipanen, bulir-bulir padi dimasukkan ke dalam alat ini. Dengan memutar tuas yang terhubung ke mekanisme kipas, padi di dalamnya akan berputar, dan angin yang dihasilkan kipas membantu memisahkan butir padi dari kulitnya. Alat ini mencerminkan keahlian masyarakat Dayak Ngaju dalam menciptakan solusi sederhana namun efektif menggunakan bahan-bahan alami yang tersedia di sekitar mereka. Alat ini tidak hanya membantu dalam proses pengolahan padi, tetapi juga melestarikan nilai-nilai tradisi dan kebudayaan Dayak Ngaju.
+', 6),
+	('Utar atau Kipas Paréi adalah alat tradisional yang digunakan oleh masyarakat Dayak Ngaju di Kalimantan Tengah untuk memisahkan padi dari kulitnya. Alat ini merupakan simbol kearifan lokal yang memadukan fungsi praktis dan tradisi dalam kegiatan pertanian masyarakat setempat. Terbuat dari bahan utama kayu atau bambu yang membentuk kerangka, alat ini dilengkapi dengan kipas putar yang dioperasikan melalui tuas yang terbuat dari logam.
+
+Dalam penggunaannya, setelah padi dipanen, bulir-bulir padi dimasukkan ke dalam alat ini. Dengan memutar tuas yang terhubung ke mekanisme kipas, padi di dalamnya akan berputar, dan angin yang dihasilkan kipas membantu memisahkan butir padi dari kulitnya. Alat ini mencerminkan keahlian masyarakat Dayak Ngaju dalam menciptakan solusi sederhana namun efektif menggunakan bahan-bahan alami yang tersedia di sekitar mereka. Alat ini tidak hanya membantu dalam proses pengolahan padi, tetapi juga melestarikan nilai-nilai tradisi dan kebudayaan Dayak Ngaju.
+', 7),
+    ('Gamang adalah alat musik tradisional yang berasal dari suku Dayak Maanyan di Kalimantan Tengah. Alat musik ini terbuat dari bilah-bilah kayu yang berjumlah lima, di mana setiap bilah memiliki nada yang berbeda satu sama lain. Kayu yang digunakan untuk membuat Gamang biasanya adalah kayu ulin atau kayu hampul, yang dikenal karena kekuatannya dan kemampuannya menghasilkan suara yang khas.
+
+Untuk memainkannya, Gamang membutuhkan alat pemukul yang juga terbuat dari kayu. Alat musik ini sering digunakan dalam berbagai kesenian tradisional Dayak Maanyan seperti Bawo, Bahalai, Tangkurupan, dan Dadas. Selain sebagai instrumen musik, Gamang juga menjadi bagian penting dari warisan budaya Dayak Maanyan, mencerminkan tradisi dan nilai-nilai mereka.
+', 8),
+    ('Suling Bahalang adalah alat musik tradisional yang berasal dari suku Dayak Ngaju di Kalimantan Tengah. Alat musik ini dibuat dari bahan utama bambu atau buluh, yang dipilih karena kemudahan dalam pengolahan dan sifatnya yang mampu menghasilkan suara merdu.
+
+Suling Bahalang memiliki lubang-lubang nada yang dilubangi secara manual pada batang bambu, yang menghasilkan nada berbeda saat dimainkan. Cara memainkannya adalah dengan meniup bagian ujung suling sambil menutup atau membuka lubang nada sesuai irama yang diinginkan. Alat musik ini sering digunakan dalam upacara adat atau untuk mengiringi lagu-lagu tradisional Dayak.
+', 9),
+	('Japen adalah alat musik tradisional yang berasal dari suku Dayak Ngaju di Kalimantan Tengah. Alat musik ini terbuat dari kayu pilihan, seperti kayu ulin atau kayu hampul, yang dikenal karena kekuatannya dan kemampuannya menghasilkan resonansi suara yang baik.
+
+Japen memiliki bentuk yang menyerupai kecapi atau gitar, dengan beberapa senar yang dipetik untuk menghasilkan nada. Alat musik ini sering digunakan dalam berbagai upacara adat dan pertunjukan seni tradisional suku Dayak Ngaju, mencerminkan kekayaan budaya dan tradisi musik mereka.
+', 10),
+	('Kangkanung adalah alat musik tradisional suku Dayak Ngaju di Kalimantan Tengah. Alat ini dimainkan dengan cara dipukul, terbuat dari bilah logam yang disusun di rak kayu, biasanya terdiri dari lima bilah dengan nada berbeda. Ada dua jenis Kangkanung berdasarkan bahan: Kangkanung perunggu, yang diimpor dari luar Kalimantan, dan Kangkanung kayu, yang dibuat oleh masyarakat lokal.
+
+Kangkanung digunakan sebagai pengiring seni tari dan lagu daerah, terutama dalam acara sakral seperti Tari Balian dan Tari Kanjan, serta dalam kesenian profan. Alat musik ini sering dimainkan bersama gong dan memiliki bentuk mirip kenong, tetapi mencerminkan ciri khas tradisi Dayak Ngaju.
+', 11),
+	('Mandau adalah senjata tradisional khas suku Dayak yang berasal dari berbagai sub-suku Dayak, termasuk Dayak Ngaju, Dayak Iban, Dayak Kenyah, Dayak Kayan, dan Dayak Benuaq, yang tersebar di Kalimantan, khususnya Kalimantan Tengah, Kalimantan Timur, dan Kalimantan Barat. Mandau dibuat dari bahan utama logam, terutama besi pilihan yang diambil dari batu gunung atau bijih besi. Bagian gagangnya biasanya terbuat dari kayu keras seperti kayu ulin, dan sering dihiasi dengan ukiran khas Dayak, bulu burung, atau rambut manusia, yang memiliki makna simbolik.
+
+Mandau bukan hanya sebuah senjata, tetapi juga simbol status, keberanian, dan seni tradisional masyarakat Dayak. Mandau digunakan dalam berbagai upacara adat, perlindungan, dan sebagai bagian dari pakaian tradisional dalam pertunjukan budaya.
+', 12),
+	('Talawang adalah perisai tradisional khas masyarakat Dayak di Kalimantan, digunakan sebagai alat perlindungan dalam peperangan. Talawang ditemukan di berbagai sub-suku Dayak, termasuk Dayak Ngaju, Dayak Kenyah, Dayak Maanyan, dan Dayak Iban. Perisai ini biasanya dibuat dari kayu yang kuat dan ringan, seperti kayu ulin atau kayu keras lainnya, sehingga mudah digunakan tetapi tahan terhadap serangan.
+
+Talawang dihias dengan ukiran khas yang memiliki makna simbolis, seringkali melambangkan kekuatan, perlindungan, dan roh penjaga. Dalam tradisi Dayak, Talawang tidak hanya memiliki fungsi praktis sebagai alat pertahanan, tetapi juga menjadi bagian penting dari ritual adat, tarian perang, dan sebagai simbol budaya yang melambangkan keberanian dan identitas suku.
+', 13),
+	('Sipet atau sumpit adalah senjata tradisional khas masyarakat Dayak yang digunakan untuk berburu. Sipet ditemukan di hampir semua sub-suku Dayak di Kalimantan, termasuk Dayak Ngaju, Dayak Maanyan, Dayak Kenyah, dan Dayak Iban. Sipet terbuat dari kayu keras, seperti kayu ulin, yang dilubangi secara presisi dengan teknik tradisional untuk membuat saluran panjang. Anak sumpitnya, yang disebut damek, biasanya terbuat dari bambu atau lidi yang dihaluskan, dengan ujungnya diberi racun alami dari getah tanaman beracun.
+
+Senjata ini memiliki fungsi utama untuk berburu hewan kecil, dengan kemampuan meluncurkan anak sumpit secara cepat dan akurat. Selain itu, sumpit juga memiliki nilai simbolis sebagai bagian dari identitas budaya dan tradisi Dayak.
+', 14),
+	('Serupai adalah alat musik tradisional yang berasal dari Kalimantan Tengah, khususnya dari masyarakat Dayak Ngaju dan beberapa sub-suku Dayak lainnya. Alat musik ini umumnya terbuat dari bambu, yang diproses dan dibentuk sedemikian rupa untuk menghasilkan suara. Serupai dimainkan dengan cara ditiup, mirip dengan cara memainkan harmonika. Suara yang dihasilkan cukup unik dan sering digunakan dalam upacara adat, khususnya dalam upacara Belian, yang merupakan ritual penyembuhan atau pemujaan dalam tradisi Dayak.
+
+Selain digunakan dalam upacara adat, Serupai juga sering dimainkan untuk hiburan pribadi atau dalam konteks sosial di kalangan masyarakat Dayak. Dalam upacara Belian, Serupai memiliki peran penting dalam bagian ngawak, yang merupakan klimaks dari upacara tersebut. Pemain Serupai biasanya adalah laki-laki, dan dalam konteks adat, sering kali hanya satu orang yang memainkan alat musik ini.
+', 15),
+	('Lunju atau Lonjo adalah senjata tradisional yang digunakan oleh masyarakat Dayak di Kalimantan. Senjata ini berupa tombak yang digunakan untuk berburu atau dalam upacara adat. Lunju atau Lonjo ditemukan di berbagai suku Dayak, termasuk Dayak Ngaju, Dayak Kenyah, Dayak Iban, dan Dayak Tunjung.
+
+Alat ini terbuat dari kayunya, yang biasanya berupa kayu ulin atau kayu keras lainnya yang kuat dan tahan lama. Bagian ujung Lunju atau Lonjo seringkali dilengkapi dengan mata tombak yang terbuat dari logam atau batu tajam, meskipun dalam beberapa kasus, ujungnya juga bisa terbuat dari kayu yang telah diasah hingga tajam. Senjata ini sering digunakan dalam berburu hewan besar, serta dalam tradisi perang atau pertahanan diri dalam sejarah masyarakat Dayak.
+
+Meskipun Lunju/Lonjo merupakan alat praktis, ia juga memiliki nilai budaya yang penting dalam masyarakat Dayak sebagai simbol keberanian dan kearifan lokal.
+', 16),
+	('Beliung adalah alat tradisional yang digunakan oleh masyarakat Dayak di Kalimantan. Alat ini umumnya digunakan sebagai kapak atau parang untuk berbagai keperluan, seperti bercocok tanam, berburu, atau dalam upacara adat. Beliung ditemukan di berbagai suku Dayak, termasuk Dayak Ngaju, Dayak Maanyan, Dayak Iban, dan Dayak Kenyah.
+
+Alat ini terbuat dari logam, biasanya besi atau baja, yang ditempa dan diproses agar memiliki ketajaman yang tinggi. Pegangan beliung terbuat dari kayu, sering kali menggunakan kayu keras seperti kayu ulin, yang dikenal karena kekuatan dan ketahanannya. Beliung memiliki nilai fungsional yang sangat penting dalam kehidupan sehari-hari, tetapi juga melambangkan kekuatan dalam berbagai ritual adat masyarakat Dayak.
+', 17),
+	('Duhung atau Dohong adalah senjata tradisional khas suku Dayak, terutama Dayak Ngaju di Kalimantan Tengah. Senjata ini memiliki nilai budaya yang sangat tinggi, karena tidak hanya berfungsi sebagai alat pertahanan, tetapi juga memiliki makna simbolis dan spiritual dalam kehidupan masyarakat Dayak. Duhung berbentuk seperti tombak pendek atau belati besar dengan mata pisau lebar. Senjata ini digunakan untuk berbagai keperluan, termasuk berburu, perang, dan keperluan adat. Bentuknya yang khas menjadikannya simbol kehormatan dan kekuatan dalam budaya Dayak.
+
+Duhung biasanya dibuat dari bahan logam, seperti besi atau baja, yang ditempa secara tradisional oleh pandai besi lokal. Gagangnya sering dibuat dari kayu keras, seperti kayu ulin atau kayu besi, yang dihias dengan ukiran khas Dayak. Kadang-kadang, gagang atau sarungnya dilengkapi dengan ornamen berbahan tanduk atau rotan, menambah nilai estetika dan sakral. Dalam tradisi adat Dayak, Duhung tidak hanya dipandang sebagai alat praktis tetapi juga sebagai benda keramat yang sering digunakan dalam upacara adat, seperti ritual penyembuhan, perlindungan spiritual, atau sebagai bagian dari simbol status sosial. Keberadaannya melambangkan kedekatan masyarakat Dayak dengan alam dan kepercayaan mereka terhadap roh-roh leluhur.
+', 18),
+	('Salung adalah alat musik tradisional yang dikenal di kalangan beberapa sub-suku Dayak, seperti Dayak Ngaju, Dayak Ma\'anyan, dan Dayak Ot Danum. Alat musik ini terbuat dari bambu yang dipilih secara khusus karena sifat resonansinya yang mampu menghasilkan suara khas. Bambu yang digunakan dipotong menjadi tabung-tabung dengan ukuran tertentu dan diberi celah untuk menghasilkan nada yang berbeda.
+
+Salung dimainkan dengan cara dipukul menggunakan alat pemukul dari kayu atau bahan serupa. Alat musik ini memiliki peran penting dalam berbagai kegiatan budaya, termasuk upacara adat, pesta panen, dan hiburan tradisional. Salung juga sering dihias dengan ukiran atau motif khas Dayak, mencerminkan nilai estetika dan identitas budaya masyarakat yang menggunakannya.
+', 19),
+	('Jukung adalah perahu tradisional yang digunakan oleh berbagai sub-suku Dayak di Kalimantan, termasuk Dayak Ngaju, Dayak Ma\'anyan, dan Dayak Ot Danum. Jukung telah menjadi bagian integral dari kehidupan masyarakat Dayak, terutama di Kalimantan Tengah, sebagai sarana transportasi utama di sungai-sungai yang membelah wilayah tersebut.
+
+Jukung biasanya dibuat dari bahan kayu ulin atau kayu besi, yang dikenal karena kekuatannya dan kemampuannya bertahan lama meskipun sering terkena air. Proses pembuatannya menggunakan teknik tradisional, dengan batang kayu yang dipilih dengan cermat untuk dilubangi dan dibentuk menjadi perahu. Pengrajin tradisional sering menggunakan alat-alat sederhana seperti pahat dan kapak, dengan beberapa teknik seperti pembakaran untuk membentuk rongga perahu.
+
+Selain sebagai alat transportasi, jukung juga memiliki makna simbolis dalam budaya Dayak. Dalam beberapa tradisi, jukung digunakan dalam upacara adat atau sebagai bagian dari prosesi ritual tertentu. Desainnya kadang dihias dengan ukiran khas yang mencerminkan identitas budaya masyarakat Dayak yang menggunakannya. Jukung mencerminkan hubungan erat antara masyarakat Dayak dengan alam, terutama sungai, sebagai sumber kehidupan utama mereka.
+', 20),
+	('Sangkarut adalah pakaian adat Kalimantan Tengah yang berasal dari suku Dayak Ngaju. Pakaian ini memiliki bentuk dan motif menyerupai rompi. Pada zaman dahulu, Baju Sangkarut digunakan sebagai pakaian perang oleh suku Dayak Ngaju untuk melawan musuh. Namun, saat ini, pakaian ini sering digunakan dalam upacara adat, termasuk pernikahan, di Kalimantan Tengah.
+
+Baju Sangkarut terbuat dari bahan alami seperti serat daun nanas, serat daun lemba, dan serat nyamu, yang diolah secara tradisional untuk membuatnya menjadi kuat dan tahan lama. Pakaian ini juga dihiasi dengan Sulau atau kulit kerang, sehingga sering disebut juga sebagai Baju Sulau. Selain itu, Baju Sangkarut dilengkapi dengan berbagai hiasan dan aksesoris tradisional seperti kulit trenggiling, kalung tulang, uang logam, kancing, tombak, perisai, dan manda. Pakaian ini melambangkan kehormatan, keberanian, dan keterikatan dengan alam serta leluhur masyarakat Dayak Ngaju.
+', 21),
+	('Baju Pawang adalah pakaian adat yang digunakan oleh ulama atau dukun dalam masyarakat Dayak, khususnya di Kalimantan Tengah. Pakaian ini biasanya dikenakan pada perayaan Kaharingan, kepercayaan tradisional Suku Dayak, untuk memanjatkan doa-doa atau dalam berbagai ritual spiritual. Dukun atau pawang dalam kepercayaan Dayak dianggap memiliki kemampuan untuk melindungi diri dari roh jahat, menyembuhkan penyakit, serta membantu menurunkan hujan.
+
+Baju Pawang terbuat dari serat kayu atau serat tumbuhan khusus yang dianggap memiliki kekuatan magis oleh masyarakat setempat. Bahan alami ini dipercaya membawa energi spiritual yang penting dalam upacara adat. Selain itu, pakaian tersebut dihiasi dengan berbagai manik-manik dan rumbai-rumbai benang sebagai simbol kekuatan dan keindahan. Kini, Baju Pawang juga sering ditampilkan dalam pertunjukan tari adat di Kalimantan Tengah, meskipun sebelumnya lebih banyak digunakan dalam konteks keagamaan dan ritual adat.
+', 22),
+	('Dulu, masyarakat Kalimantan Tengah sudah mengenal seni menenun dan menggunakan keterampilan ini untuk menghasilkan pakaian tradisional. Salah satu hasil tenunan yang terkenal adalah Baju Tenunan, yang berasal dari Suku Dayak Ngaju di Kalimantan Tengah.
+
+Bahan yang digunakan dalam pembuatan Baju Tenunan ini berasal dari bahan alami, seperti serat kayu nyamu dan serat nanas. Dalam proses menenunnya, ditambahkan berbagai motif untuk mempercantik tampilan pakaian adat ini. Beberapa motif yang biasa ditemukan antara lain motif segitiga, pemandangan alam, serta motif flora dan fauna yang mencerminkan kekayaan alam Kalimantan. Pakaian adat Tenunan ini cukup fleksibel dan sering digunakan dalam kehidupan sehari-hari oleh masyarakat Suku Dayak Ngaju di Kalimantan Tengah, meskipun juga digunakan dalam acara-acara adat tertentu. Pakaian ini tidak hanya memiliki nilai fungsional tetapi juga merupakan simbol dari kekayaan budaya dan tradisi masyarakat Dayak.
+', 23),
+	('Dulu, masyarakat Kalimantan Tengah sudah mengenal seni menenun dan menggunakan keterampilan ini untuk menghasilkan pakaian tradisional. Salah satu hasil tenunan yang terkenal adalah Baju Tenunan, yang berasal dari Suku Dayak Ngaju di Kalimantan Tengah.
+
+Bahan yang digunakan dalam pembuatan Baju Tenunan ini berasal dari bahan alami, seperti serat kayu nyamu dan serat nanas. Dalam proses menenunnya, ditambahkan berbagai motif untuk mempercantik tampilan pakaian adat ini. Beberapa motif yang biasa ditemukan antara lain motif segitiga, pemandangan alam, serta motif flora dan fauna yang mencerminkan kekayaan alam Kalimantan. Pakaian adat Tenunan ini cukup fleksibel dan sering digunakan dalam kehidupan sehari-hari oleh masyarakat Suku Dayak Ngaju di Kalimantan Tengah, meskipun juga digunakan dalam acara-acara adat tertentu. Pakaian ini tidak hanya memiliki nilai fungsional tetapi juga merupakan simbol dari kekayaan budaya dan tradisi masyarakat Dayak.
+', 24),
+	('Pakaian adat Upak Nyamu berasal dari Suku Dayak di Kalimantan Tengah, khususnya dari suku Dayak Ngaju. Pakaian ini dibuat dari kulit kayu nyamu, yang diproses dan dibentuk menjadi pakaian dengan teknik tradisional. Kulit kayu nyamu ini diolah dan dijadikan berbagai bentuk pakaian, seperti rompi, cawat, dan ewah (penutup tubuh bagian bawah). Ada dua jenis pakaian adat Upak Nyamu, yaitu rompi dengan lengan dan rompi tanpa lengan.
+
+Pakaian adat Upak Nyamu, meskipun memiliki kesamaan bentuk dengan pakaian adat Sangkarut, tergolong cukup langka dan semakin sulit ditemukan. Oleh karena itu, diperlukan upaya khusus untuk melestarikan dan mengenalkan pakaian adat ini agar tidak punah, mengingat nilai budaya dan sejarah yang terkandung di dalamnya.
+', 25);
+
+
+-- INSERT INTO tb_blog (judul, deskripsi_blog, gambar_blog) VALUES 
+--     ('Pakaian Adat dan Alat Tradisional Kal-Teng', 
+--     CONCAT(
+--         'Kalimantan Tengah, atau yang sering disingkat Kalteng, merupakan salah satu provinsi di Indonesia yang kaya akan kebudayaan. Dalam website ini, kita akan menjelajahi dua aspek penting dari warisan budaya Kalteng yaitu pakaian adat dan alat tradisional. Setiap elemen budaya, mulai dari pakaian hingga alat-alat tradisional, memiliki cerita yang unik dan filosofi yang mencerminkan nilai-nilai luhur masyarakat setempat.',
+--         CHAR(10),
+--         'Pakaian adat tidak hanya menjadi simbol keindahan visual, tetapi juga memiliki makna mendalam yang terikat erat dengan ritual, adat istiadat, serta keyakinan lokal.',
+--         CHAR(10),
+--         'Begitu pula dengan alat tradisional yang dipakai dalam kehidupan sehari-hari, seperti Mandau, senjata tradisional yang mengandung nilai keberanian dan perlindungan, atau perahu kayu tradisional yang menjadi bagian penting dalam kehidupan masyarakat yang tinggal di sepanjang sungai.'
+--     )
+--     , 'halaman blog.png');
+
+INSERT INTO tb_blog (judul, deskripsi_blog, penulis, tanggal, gambar_blog) 
+VALUES 
+('Mengenal Lebih Dekat dengan Ragam Alat Musik Kalteng', 
+    'Kalimantan Tengah memiliki keragaman budaya dan peninggalan suku Dayak, dari baju adat, upacara adat dan alat musik tradisional. Karena pengaruh Tionghoa cukup lama saat masa perdaganan, beberapa di antaranya terbilang mempunyai unsur Tionghoa. Berikut cerita dan ciri khas dari alat musik tradisional di Kalimantan Tengah.
+
+Kecapi
+
+Tak hanya di Kalimantan, kecapi juga dikenal sebagai alat musik daerah di Jawa Barat. Menurut masyarakat Bugis, kecapi diperkenalkan oleh pelaut asal China yang berlayar selama berhari-hari. Saat badai datang, tanpa direncanakan, dirinya mengikat tali ke kayu, menciptakan sebuah nada. Pelaut tersebut pun mencoba membuat kembali alat musik tersebut dan membawanya ke daratan Bugis. Ini berbuah apresiasi dari masyarakat setempat. Mereka pun tertarik membuatnya sendiri. Berbeda dari yang dikenal sebagian besar orang, kecapi Dayak Kalteng memiliki bentuk seperti  burung enggang yang dianggap sakral oleh masyarakat Dayak. Alat musik ini dibuat dari kayu hanjalutung. Biasanya kecapi sering kali melengkapi keindahan pertunjukan karungut, sebuah seni tutur yang kaya akan nilai-nilai luhur. Melalui pantun dan syair yang indah, karungut menyampaikan pesan tentang moralitas, adat istiadat, semangat perjuangan, dan semangat membangun masyarakat yang lebih baik.
+
+Beragam Cara Memainkan Kecapi
+ a) Sinteruk-toel adalah cara memainkan kecapi dengan menggunakan dua jari telunjuk secara bersamaan. Jari-jari ini digunakan untuk mengetuk senar dengan posisi yang sedikit melengkung. Teknik ini sering digunakan untuk memainkan nada yang rumit.
+ b) Teknik Dijambret ini menggunakan lebih banyak jari untuk memainkan kecapi. Dengan teknik ini, pemain bisa memainkan tiga nada sekaligus dan bebas memilih nada yang diinginkan. Ibu jari, telunjuk, dan jari tengah digunakan untuk memetik, sedangkan jari lainnya bisa membantu menghasilkan nada tambahan.
+ c) Teknik Dijeungkalan mirip dengan teknik dijambret, yaitu memainkan tiga senar sekaligus. Bedanya, pemain kecapi akan condong ke depan dan jari-jari tangan kiri juga ikut memainkan nada tambahan. Teknik ini cukup sulit, jadi butuh latihan yang banyak.
+
+Gandang Tatau
+
+Gandang Tatau adalah salah satu alat musik tradisional masyarakat Dayak yang bermukim di sekitar aliran Sungai Kahayan, Palangkaraya. Diperkirakan sudah ada sebelum abad ke-10 Masehi. Tatau berarti tunggal, alat musik tradisional ini adalah gendang yang berukuran besar dan panjang umumnya sekitar 1-2 meter dengan diameter lebih kurang 40 centimeter. Pada Hanya satu bagian ujung gandang tatau yang terpasang membran dan terbuka pada pada bagian pangkalnya. Gandang tatau terbuat dari kayu, kulit hewan, dan rotan. Ini adalah gendang yang hanya memiliki satu sisi yang dipukul. Alat musik ini digunakan dalam upacara adat seperti menyambut tamu penting atau upacara kematian. Biasanya, gendang dimainkan bersamaan dengan gong dan kangkanong.
+
+Japen
+
+Sekilas alat musik ini mirip seperti gitar atau kecapi. Japen merupakan hasil perpaduan budaya China yang masuk ke suku Dayak pada zaman perdagangan. Japen adalah alat musik tradisional Kalimantan Tengah yang bentuknya menyerupai kecapi, gitar, atau mandolin. Japen adalah hasil akulturasi budaya Suku Dayak dengan pedagang China yang masuk ke tanah Kalimantan Tengah untuk berdagang. Alat ini terbuat dari kayu dan empat buah senar. Umumnya pada bagian badan japen dihias dengan motif khas Suku dayak dengan beberapa makna filosofis. Cara memainkan alat musik ini ialah dipetik. Saat dipetik, japen akan mengeluarkan nada yang mirip dengan nada khas instrumen China.
+
+Kangkanong
+
+Alat musik tradisional Dayak Ngaju yang diperkirakan sudah ada dari sebelum abad ke-10. Alat musik ini terdiri dari beberapa batang bambu atau logam yang disusun sedemikian rupa. Saat dipukul, batang-batang bambu ini menghasilkan bunyi yang merdu. Kangkanong merupakan bagian penting dari tarian Manasai yang sering dipentaskan di Balai Kaharingan Pahandut.
+', 
+    'Almer Sophian', '2024-12-13', 'blog 1.png'),
+('4 Fakta Unik Pakaian Adat Kalimantan Tengah, Intip yuk!', 
+    'Pakaian adat Kalimantan Tengah tak kalah unik dari pakaian adat Kalimantan Barat dan provinsi di Pulau Kalimantan lainnya lho, Moms!
+
+Moms, tahukah suku-suku asli di Kalimantan?
+
+Kalimantan Timur mayoritas dihuni etnis Dayak Kenyah, lho Moms!
+
+Sedangkan Kalimantan Barat didiami oleh suku Dayak Iban dan Dayak Kayan.
+
+Sedangkan, Kalimantan Tengah mayoritasnya adalah suku Dayak Ngaju dan Maanyan.
+
+Keberadaan suku bangsa tersebut pun memengaruhi budaya dan ragam pakaian adat Kalimantan Tengah.
+
+Adapun pakaian adat Kalimantan Tengah memiliki nama dan bentuk yang khas. Material pembuatnya pun masih sangat tradisional dan beberapa bersumber dari alam.
+
+Untuk mengetahui lebih lengkap tentang fakta di balik pakaian adat Kalimantan Tengah, yuk simak ulasannya berikut!
+
+1. Busana Adatnya Dibuat dengan Material Alam
+    Suku Dayak Ngaju merupakan sub-etnis yang mendiami daerah aliran sungai Kapuas, Kahayan, Rungan Manuhing, Barito dan Katingan di Kalimantan Tengah.
+
+    Etnis ini memiliki baju adat yang dikenal dengan sebutan baju sangkarut.
+
+    Mengutip Multi Media Center Kalteng, baju sangkarut yang dikenal juga dengan nama baju basulau merupakan pakaian rompi yang dilapisi oleh sulau atau kerang.
+
+    Bentuknya seperti rompi yang bahannya mengandung serat daun nanas, serat daun lemba, serat tengang, dan serat nyamu.
+
+    Kulit nyamu atau daun lemba adalah kulit tumbuhan pinang puyuh yang banyak ditemukan di hutan hujan tropis seperti di Kalimantan.
+
+    Kulit ini memiliki struktur yang keras dan berserat, sehingga dapat dirajut dan dibentuk layaknya rompi yang bisa tahan hingga berpuluh-puluh tahun.
+
+    Rompi dirajut sedemikian rupa dan dihiasi dengan cat alami, serta bermacam-macam hiasan seperti:
+
+    Tempelan kulit trenggiling
+    Kancing
+    Uang logam
+    Manik-manik
+    Benda-benda yang dianggap memiliki kekuatan gaib atau azimat
+    Dengan dilengkapi benda-benda azimat masyarakat Dayak Ngaju percaya dengan memakai baju ini akan membuat mereka kebal akan senjata api dan benda tajam.
+
+    Dulunya, baju sangkarut dipakai untuk berperang melawan musuh.
+
+    Selain itu, dikenakan sebagai pakaian kebesaran dalam berbagai upacara, seperti pernikahan adat dan acara lainnya.
+    Kini, baju adat ini masih dikenakan hingga sekarang namun bentuknya dimodifikasi dan disesuikan dengan bahan yang tersedia.
+
+2. Warna-warni Busana Adat Pengantin
+    Dibanding busana pengantin provinsi lainnya di Indonesia, pakaian adat Kalimantan Tengah dalam prosesi pernikahan terlihat lebih sederhana.
+
+    Meski demikian paduan warnanya sangatlah menarik dan mencolok.
+
+    Pakaian adat Kalimantan Tengah untuk pengantin terdiri dari pakaian pengantin perempuan dan laki-laki.
+
+    Pakaian pengantin perempuan berbentuk kemben dari bahan beludru atau sutera beraneka warna, yang dipadukan dengan kuwi talap kain atau rok span bermotif pike atau jungki.
+
+    Pada bagian rok juga dilengkapi dengan motif tanduk musal ambun atau jungkir wulan welum.
+
+    Sementara busana pengantin pria berupa baju teluk belanga atau baju lambat batakat sungkit ayat berwarna merah terang.
+
+    Baju ini dilengkapi dengan kancing warna emas atau lawung, dan renda warna emas.
+
+    Untuk bawahan berupa celana salawar pidadang, yang bagian ujung celananya dibubuhi manik-manik atau tanelei.
+
+    Ada filosofi menarik yang tersimpan di balik busana pengantin perempuan dan laki-laki Kalimantan Tengah.
+
+    Untuk menghasilkan aneka warna pada busana pengantin, digunakan bahan pewarna yang diolah dari alam.
+
+    Misalnya saja, warna hitam dari jelaga, warna putih dari tanah putih dicampur air, warna kuning dari kunyit dan warna merah dari buah rotan.
+
+3. Makna Manik-Manik Kalimantan Tengah
+    Masyarakat Dayak identik dengan manik-manik, karena banyak mewarnai keseharian mereka mulai dari perlengkapan baju, hiasan kepala, kalung, tas, mandau, dan lain-lain.
+
+    Bagi suku Dayak di Kalimantan Tengah, manik-manik sering dihubungkan dengan berbagai kepercayaan.
+
+    Sehingga sering disertakan dalam beragam upacara adat, seperti:
+
+    Upacara penyembuhan orang sakit
+    Upacara menyambut kelahiran
+    Upacara perkawinan
+    Upacara angkat saudara
+    Upacara kematian
+
+    Warna-warni manik-manik yaitu merah, biru, kuning, hijau dan putih ternyata memiliki arti tersendiri.
+
+    Merah artinya sumber semangat kehidupan seseorang agar tidak mudah kendur.
+
+    Biru dianggap sebagai sumber kekuatan dari segala penjuru yang tidak bisa luntur.
+
+    Kuning merupakan wama keagungan dan kesucian Tuhan serta keramat. Hijau adalah simbol kelengkapan dan inti saribumi.
+
+    Sedangkan putih adalah lambang kesucian, baik kepercayaan maupun iman seseorang kepada Tuhan.
+
+    Dalam tradisi masyarakat Dayak Ngaju, dikenal dua jenis bahan manik yaitu lilis dan lamiang.
+
+    Manik lamiang biasanya digunakan dalam upacara perkawinan.
+
+    Manik ini dikaitkan pada pergelangan tangan kedua mempelai dengan maksud agar ikatan tali perkawinan tersebut mendapat lindungan Tuhan dan terus abadi.
+
+    Sementara dalam upacara kematian, lamiang digunakan oleh pemimpin upacara agar dijauhkan dari bencana yang dapat mengganggu jalannya upacara.
+
+    Manik ini juga berguna sebagai lambang penolakan bala sekaligus lambang kekuatan.
+
+4. Batik Benang Bintik Khas Kalimantan Tengah
+    Ada berbagai jenis batik di Indonesia. Di Kalimantan Tengah terdapat batik bernama benang bintik.
+
+    Mengutip Studi tentang Motif Benang Bintik, benang bintik mulai diciptakan pada tahun 1991 melalui pelatihan membatik, dan baru dikenal pada tahun 1995.
+
+    Asalnya berawal dari keinginan pemerintah yang pada saat itu mencetuskan adanya kain khas yang dapat dijadikan busana khas.
+
+    Benang bintik ini juga bisa sebagai cinderamata yang dapat diberikan kepada tamu yang berkunjung ke kota Palangkaraya.
+    Batik benang bintik Kalimantan Tengah memiliki beragam motif, di antaranya:
+
+    Motif pohon Batang Garing yang memiliki makna sebuah ikatan yang kuat antara manusia, langit, bumi dengan keberadaan Raying Hatalla
+    Motif Balanga dan Ukir Tingang Ranggaban Patung Nyahu yang merupakan lambang kesucian
+    Motif Lawang Suri berarti menjaga keselamatan
+    Motif Kambang Grantung sebagai lambang kesetiaan
+    Motif Pusaka Dayak, Talawang dan Penyang Baja Batu sebagai ambang kekuatan dan perlindungan
+    Motif Ukir Buntut Kakupu Gajah merupakan lambang kesabaran dan anugerah yang diturunkan oleh Raying Hatalla
+    Motif Pasuk Kameloh adalah lambang kesejahteraan
+    Warnanya pun beraneka ragam dan memiliki makna, yang terdiri dari Bahandang (merah), Baputi (putih), Babilem (hitam), Bahenda (kuning) dan Bahijau (hijau).
+
+    Ada juga bahan warna yang lebih gelap seperti hitam dan cokelat.
+
+    Bahan baku benang bintik umumnya menggunakan bahan kain jenis kain sutera, kain semi-sutera dan kain katun.
+
+    Batik khas Dayak Kalimantan Tengah ini biasanya dibuat sebagai bahan busana dan pakaian resmi untuk upacara adat atau acara seremonial seperti pernikahan.
+
+    Selain itu, bahan ini juga digunakan pada kegiatan-kegiatan seperti festival, ajang pemilihan model atau kegiatan kebudayaan dan kesenian daerah lainnya.
+    ', 'Gea Yustika', '2024-03-28', '4 fakta unik.png'),
+('Mengenal Baju Sangkarut, Pakaian Adat Suku Dayak Ngaju Kalimantan Tengah', 
+    'Baju sangkarut atau juga dikenal dengan baju basulau merupakan pakaian adat asal Kalimantan Tengah. Baju sangkarut dibuat oleh suku Dayak Ngaju yang bermukim di daerah Sungai Kapuas, Kalimantan Tengah.
+
+Baju berbentuk rompi ini berasal dari bahan dasar alam dengan dihiasi kerang. Mengutip dari Dinas Kominfo, Persandian, dan Statistik Provinsi Kalimantan Tengah, bahan dasar baju sangkarut mengandung serat daun nanas, serat daun lemba, serta tengang, dan serat nyamu.
+
+Kulit dari daun lemba merupakan kulit tumbuhan pinang puyuh yang tumbuh di Kalimantan. Kulit daun lemba berstruktur keras dan berserat sehingga kuat untuk dibentuk menjadi rompi.
+
+Ornamen yang menghiasi baju sangkarut dibuat dengan bahan alami seperti kerang, tempelan kulit trenggiling, kancing, uang logam, manik-manik, dan benda magis.
+
+Benda magis yang dijadikan ornamen penghias baju sangkarut tidak hanya sebagai hiasan. Benda magis ini juga dipercaya membantu pemakainya memiliki kekebalan akan senjata tajam atau senjata api. Inilah yang menjadikan baju sangkarut umum digunakan dalam peperangan.
+
+Penamaan baju ini berasal dari kata "Sangka" dengan arti pembatas. Nilai filosofinya, baju ini dapat menangkal setiap gangguan para roh halus yang akan datang pada pemakainya. Selain itu, baju ini dipercaya bisa melindungi pemakainya dari pengaruh orang jahat.
+
+Seiring perkembangan zaman, Suku Dayak Ngaju bersosialisasi dengan kelompok dari suku lain. Sosialisasi ini berlangsung melalui praktek jual beli ketika bangsa Cina dan India datang ke Kalimantan Tengah. Bangsa Cina dan India mengenalkan manik-manik untuk melengkapi perhiasan masyarakat yang sebelumnya hanya terbuat dari biji-bijian, kayu, dan tulang.
+
+Perpaduan ini menghasilkan pakaian adat yang eksotis dengan tetap mengekspresikan kekayaan sumber daya alam. Kini baju sangkarut sulit ditemukan. Masyarakat suku Dayak Ngaju telah beralih ke baju modern yang lebih nyaman untuk dipakai.
+
+Meski demikian, baju sangkarut tetap digunakan di ritual-ritual tertentu dan acara penyambutan.
+', 
+    'Nikita Rosa', '2021-12-29', 'blog 3.png'),
+('Gendang Kuno dari Kalimantan Tengah', 
+    'Kalimantan Tengah merupakan salah satu provinsi yang terletak di Pulau Kalimantan. Provinsi yang terdiri dari 1 kota dan 13 kabupaten ini didiami oleh penduduk asli dan juga pendatang. Penduduk asli yang mendiami provinsi yang beribukota di Palangka Raya ini adalah Suku Dayak Ngaju.
+
+Seperti daerah-daerah di Indonesia lainnya, Provinsi Kalimantan Tengah memiliki beragam alat musik tradisional yang terutama dibuat oleh penduduk asli. Alat musik yang dibunyikan dengan cara dipetik, ditiup maupun dipukul ini telah ada sejak lama dan diwariskan turun-temurun. Salah satunya adalah Katambung.
+
+Katambung merupakan alat musik tradisional khas Suku Dayak Ngaju dan diyakini telah berkembang sebelum abad ke-10 Masehi. Alat musik ini termasuk dalam golongan alat musik pukul. Meskipun terlihat seperti gendang, tapi Katambung berbeda dengan gendang.
+
+Alat musik yang berbentuk seperti labu air ini memiliki panjang sekitar 70-75 cm dengan diameter atas 15-18 cm. Katambung terbuat dari kayu ulin yang dalamnya dibuat lubang sebagai resonansi. Bagian luarnya lalu diberi ukiran-ukiran dengan menggunakan pahat. Ada juga Katambung anak-anak yang terbuat dari bahan bambu dengan panjang 40-60 cm.
+
+Pada bagian atas Katambung dilapisi dengan membran yang berfungsi untuk tempat menabuh. Sedangkan bagian bawahnya berlubang. Tidak seperti alat pukul lainnya yang umumnya memiliki membran penutup dari kulit sapi, kambing, maupun kerbau, penutup Katambung terbuat dari kulit ikan buntal (termasuk dalam genus Dichotomyctere).
+
+Kalimantan Tengah merupakan salah satu provinsi yang terletak di Pulau Kalimantan. Provinsi yang terdiri dari 1 kota dan 13 kabupaten ini didiami oleh penduduk asli dan juga pendatang. Penduduk asli yang mendiami provinsi yang beribukota di Palangka Raya ini adalah Suku Dayak Ngaju.
+
+Seperti daerah-daerah di Indonesia lainnya, Provinsi Kalimantan Tengah memiliki beragam alat musik tradisional yang terutama dibuat oleh penduduk asli. Alat musik yang dibunyikan dengan cara dipetik, ditiup maupun dipukul ini telah ada sejak lama dan diwariskan turun-temurun. Salah satunya adalah Katambung.
+
+Pariwisata Indonesia
+
+Katambung merupakan alat musik tradisional khas Suku Dayak Ngaju dan diyakini telah berkembang sebelum abad ke-10 Masehi. Alat musik ini termasuk dalam golongan alat musik pukul. Meskipun terlihat seperti gendang, tapi Katambung berbeda dengan gendang.
+
+Alat musik yang berbentuk seperti labu air ini memiliki panjang sekitar 70-75 cm dengan diameter atas 15-18 cm. Katambung terbuat dari kayu ulin yang dalamnya dibuat lubang sebagai resonansi. Bagian luarnya lalu diberi ukiran-ukiran dengan menggunakan pahat. Ada juga Katambung anak-anak yang terbuat dari bahan bambu dengan panjang 40-60 cm.
+
+Pada bagian atas Katambung dilapisi dengan membran yang berfungsi untuk tempat menabuh. Sedangkan bagian bawahnya berlubang. Tidak seperti alat pukul lainnya yang umumnya memiliki membran penutup dari kulit sapi, kambing, maupun kerbau, penutup Katambung terbuat dari kulit ikan buntal (termasuk dalam genus Dichotomyctere).
+
+Pariwisata Indonesia
+
+Ikan buntal ini hidup di perairan tropis air tawar dan air payau yang ada Asia Selatan dan Asia Tenggara. Pada zaman dahulu, Suku Dayak tinggal di dekat aliran sungai dan mudah menemukan ikan ini. Kulit ikan buntal yang telah dikeringkan kemudian dijadikan membran penutup Katambung.
+
+Untuk mengikat membran ke kayu ulin, pengrajin Katambung menggunakan anyaman dari rotan yang telah dikeringkan. Anyaman ini juga dibuat satu jengkal di bawah bagian membran dan berfungsi sebagai tali pegangan.
+
+Selain perbedaan di membran, cara memainkan Katambung juga berbeda dengan gendang. Jika umumnya gendang dimainkan dengan dua tangan, Katambung bisa dimainkan dengan satu tangan saja. Jari-jari tangan kanan akan bergerak lincah menabuh Katambung, sementara telapak tangan kiri memegang bagian batang Katambung.
+
+Alat musik yang termasuk perkusi ini bisa dimainkan dengan sambil duduk ataupun berdiri. Biasanya, pemain Katambung terdiri dari 5 hingga 7 orang dengan seorang pemimpin yang disebut upu.
+
+Katambung umumnya dimainkan saat upacara-upacara adat besar yang berhubungan dengan gawi matey, seperti pada upacara Tiwah (upacara kematian) dan gawi belom (memotong pantan). Pada tahun 2015, Katambung ditetapkan oleh Kementerian Pendidikan dan Kebudayaan Indonesia sebagai salah satu Warisan Budaya Tak Benda Nusantara.(Nita)
+', 
+    'Redaksi PI', '2024-12-16', 'blog 4.png');
+
+
+
+-- INSERT INTO tb_tentang_kami (judul, deskripsi_tentang_kami) VALUES 
+--     ('Selamat datang di website Adat Kalteng', 'Kami hadir dengan tujuan untuk melestarikan dan memperkenalkan keindahan serta kekayaan budaya Kalimantan Tengah melalui pakaian adat dan alat tradisional yang penuh akan makna filosofis dan sejarah panjang. Melalui platform ini, kami ingin memperkenalkan warisan busana tradisional dan alat-alat khas yang menjadi identitas kuat masyarakat Kalimantan Tengah.
+
+-- Setiap elemen budaya, mulai dari pakaian hingga alat-alat tradisional, memiliki cerita yang unik dan filosofi yang mencerminkan nilai-nilai luhur masyarakat setempat. Pakaian adat tidak hanya menjadi simbol keindahan visual, tetapi juga memiliki makna mendalam yang terikat erat dengan ritual, adat istiadat, serta keyakinan lokal. Begitu pula dengan alat tradisional yang dipakai dalam kehidupan sehari-hari, seperti Mandau, senjata tradisional yang mengandung nilai keberanian dan perlindungan, atau perahu kayu tradisional yang menjadi bagian penting dalam kehidupan masyarakat yang tinggal di sepanjang sungai.');
+
+    
+INSERT INTO tb_tentang_kami (judul, deskripsi_tentang_kami) 
+VALUES 
+(
+    'Selamat datang di website Adat Kalteng', 
+    CONCAT(
+        'Kami adalah tim perancang yang memiliki semangat untuk melestarikan dan memperkenalkan kekayaan budaya Kalimantan Tengah melalui teknologi. Dalam upaya untuk menghormati dan menjaga tradisi yang telah diwariskan oleh leluhur, kami merancang dan membangun sebuah website yang didedikasikan untuk menampilkan pakaian adat dan alat tradisional Kalimantan Tengah, yang merupakan warisan budaya yang tak ternilai harganya.',
+        CHAR(10),
+        CHAR(10),
+        'Visi Kami:',
+        CHAR(10),
+        'Visi kami adalah untuk menciptakan platform digital yang dapat menghubungkan masyarakat dengan kekayaan budaya Kalimantan Tengah, sekaligus mempromosikan warisan budaya ini ke dunia luar.',
+        CHAR(10),
+        CHAR(10),
+        'Misi Kami:',
+        CHAR(10),
+        '1. Melestarikan Budaya Kalimantan Tengah: Website ini menjadi wadah untuk melestarikan berbagai jenis pakaian adat dan alat tradisional dari Kalimantan Tengah agar tetap dikenal dan digunakan oleh generasi mendatang.',
+        CHAR(10),
+        '2. Edukasi dan Penghargaan Terhadap Tradisi: Kami berkomitmen untuk memberikan edukasi melalui informasi yang tersedia di website ini, membantu masyarakat lebih memahami makna di balik setiap pakaian adat dan alat tradisional yang ada.',
+        CHAR(10),
+        '3. Meningkatkan Aksesibilitas Budaya: Dengan hadirnya website ini, kami berharap agar informasi tentang budaya Kalimantan Tengah lebih mudah diakses oleh siapa saja, kapan saja, dan di mana saja, tanpa terbatas oleh jarak dan waktu.',
+        CHAR(10),
+        CHAR(10),
+        'Kenapa Kami Mengembangkan Website Ini? Kalimantan Tengah memiliki banyak sekali kekayaan budaya yang sering kali tidak diketahui oleh orang luar, bahkan oleh sebagian besar masyarakat Indonesia.',
+        CHAR(10),
+        'Melalui website ini, kami ingin memberikan gambaran yang lebih jelas tentang kekayaan budaya Kalimantan Tengah yang sangat beragam.',
+        CHAR(10),
+        CHAR(10),
+        'Komitmen Kami:',
+        CHAR(10),
+        'Tim kami berkomitmen untuk terus mengembangkan dan memperbarui website ini, memberikan informasi yang akurat, relevan, dan bermanfaat bagi semua pengunjung.'
+    )
+);
+
+    
+
+-- SELECT tp.*, tk.* FROM tb_produk AS tp
+-- INNER JOIN tb_kategori AS tk ON (tp.id_kategori = tk.id_kategori)
+-- WHERE tk.kategori = 'Alat Musik - Dayak Ma\'anyan' AND tp.id_produk = 11;
+
+
+-- SELECT tp.*, tdp.*
+-- FROM tb_produk AS tp
+-- INNER JOIN tb_detail_produk AS tdp
+-- ON tp.id_produk = tdp.id_produk 
+-- GROUP BY tp.id_produk;
+
+
+-- SELECT * FROM tb_produk ORDER BY id_produk DESC LIMIT 1;
+
+
+-- SELECT tp.*, tk.* FROM tb_produk AS tp
+-- INNER JOIN tb_kategori AS tk ON (tp.id_kategori = tk.id_kategori)
+-- WHERE tk.id_kategori = 1;
+
+-- SELECT tp.*, tk.* FROM tb_produk AS tp
+-- INNER JOIN tb_kategori AS tk ON (tp.id_kategori = tk.id_kategori)
+-- WHERE tp.id_produk = 1;

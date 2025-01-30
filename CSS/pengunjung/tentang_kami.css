@@ -1,0 +1,99 @@
+/* Basic Reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	/* border: 1px solid black; */
+}
+
+/* Google Font */
+.poppins {
+	font-family: "Poppins", sans-serif;
+}
+
+body {
+	overflow-x: hidden;
+	overflow-y: hidden;
+	letter-spacing: 1px;
+}
+
+/* Setting Grid Container */
+.container {
+	display: grid;
+	grid-template-areas:
+		"navbar navbar"
+		"main main";
+	grid-template-rows: 80px calc(100vh - 80px + 250px);
+}
+
+/*  - - - - - - - - - - HALAMAN NAVBAR - - - - - - - - - - */
+.navbar {
+	grid-area: navbar;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 20px;
+	background: linear-gradient(90deg, #000000, #666666);
+}
+
+.navbar h1 {
+	margin-left: 14px;
+	font-size: 16px;
+	font-weight: 800; /* Extra bold */
+	font-style: italic;
+	letter-spacing: 4px;
+	background: linear-gradient(90deg, #ff0004, #ebff00, #ffaa06);
+
+	/* memastikan bahwa gradasi hanya mempengaruhi area teks. */
+	-webkit-background-clip: text;
+
+	/* membuat teks transparan sehingga latar belakang gradien muncul pada teks. */
+	-webkit-text-fill-color: transparent;
+}
+
+.navbar .menu {
+	display: flex;
+	gap: 60px;
+}
+
+.navbar .menu a {
+	display: flex;
+	align-items: center;
+	height: 60px;
+	color: white;
+	text-decoration: none;
+	padding: 5px 30px;
+	font-size: 16px;
+	letter-spacing: 2px;
+	font-weight: 600; /* Extra boldv*/
+	font-style: italic;
+	border-radius: 24px;
+}
+
+.navbar .menu a:hover,
+.navbar .menu .active {
+	background-color: #d9d9d9;
+	color: #000000;
+}
+
+/*  - - - - - - - - - - HALAMAN MAIN - - - - - - - - - - */
+
+.main {
+	grid-area: main;
+	background-color: #d9d9d9;
+	padding: 40px 60px;
+	height: calc(100vh - 50px);
+	overflow-y: scroll;
+}
+
+.main h1 {
+	text-align: center;
+	color: #00990F;
+}
+
+.main p {
+	text-align: justify;
+	color: #333;
+	font-size: 16px;
+	line-height: 2;
+}

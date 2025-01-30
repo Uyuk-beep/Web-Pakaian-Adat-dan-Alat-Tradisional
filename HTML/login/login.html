@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Adat Kalteng Login</title>
+
+		<!-- Link CSS -->
+		<link rel="stylesheet" href="/CSS/login/login.css" />
+
+		<!-- Google Font -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<!-- Bagian Kiri -->
+		<section class="left">
+			<h2>ADAT KALTENG</h2>
+			<div class="login-box">
+				<h3>LOGIN</h3>
+				<form class="form-input" action="../admin/beranda/index.html">
+					<input type="text" placeholder="Username" required />
+					<input
+						type="password"
+						id="password"
+						placeholder="Password"
+						required
+					/>
+					<label>
+						<input
+							type="checkbox"
+							id="show-password"
+							onclick="togglePassword()"
+						/>
+						<span>Show Password</span>
+					</label>
+
+					<button type="submit">Log In</button>
+				</form>
+			</div>
+		</section>
+
+		<!-- Bagian Kanan (Gambar) -->
+		<section class="right">
+			<div class="image-placeholder">
+				<img
+					src="https://via.placeholder.com/100"
+					alt="Product Image"
+				/>
+			</div>
+		</section>
+
+		<script>
+			function togglePassword() {
+				const passwordField = document.getElementById("password");
+				const checkbox = document.getElementById("show-password");
+
+				if (checkbox.checked) {
+					passwordField.type = "text";
+				} else {
+					passwordField.type = "password";
+				}
+			}
+		</script>
+	</body>
+</html>

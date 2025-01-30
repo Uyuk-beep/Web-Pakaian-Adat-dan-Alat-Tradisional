@@ -1,0 +1,187 @@
+/* Basic Reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	/* border: 1px solid black; */
+	text-decoration: none;
+}
+
+/* Google Font */
+.poppins {
+	font-family: "Poppins", sans-serif;
+}
+
+body {
+	overflow-x: hidden;
+	overflow-y: hidden;
+	letter-spacing: 0px;
+}
+
+/* Setting Grid Container */
+.container {
+	display: grid;
+	grid-template-areas:
+		"navbar navbar"
+		"main main";
+	grid-template-rows: 80px calc(100vh - 80px + 250px);
+}
+
+/*  - - - - - - - - - - HALAMAN NAVBAR - - - - - - - - - - */
+.navbar {
+	grid-area: navbar;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 20px;
+	background: linear-gradient(90deg, #000000, #666666);
+}
+
+.navbar h1 {
+	margin-left: 14px;
+	font-size: 16px;
+	font-weight: 800; /* Extra bold */
+	font-style: italic;
+	letter-spacing: 4px;
+	background: linear-gradient(90deg, #ff0004, #ebff00, #ffaa06);
+
+	/* memastikan bahwa gradasi hanya mempengaruhi area teks. */
+	-webkit-background-clip: text;
+
+	/* membuat teks transparan sehingga latar belakang gradien muncul pada teks. */
+	-webkit-text-fill-color: transparent;
+}
+
+.navbar .menu {
+	display: flex;
+	gap: 60px;
+}
+
+.navbar .menu a {
+	display: flex;
+	align-items: center;
+	height: 60px;
+	color: white;
+	text-decoration: none;
+	padding: 5px 30px;
+	font-size: 16px;
+	letter-spacing: 2px;
+	font-weight: 600; /* Extra boldv*/
+	font-style: italic;
+	border-radius: 24px;
+}
+
+.navbar .menu a:hover,
+.navbar .menu .active {
+	background-color: #d9d9d9;
+	color: #000000;
+}
+
+/*  - - - - - - - - - - HALAMAN MAIN - - - - - - - - - - */
+
+.main {
+	grid-area: main;
+	background-color: #d9d9d9;
+	padding: 20px;
+	width: 100vw;
+	height: calc(100vh - 50px);
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.main .scroll {
+	overflow-y: scroll;
+
+}
+
+/* .main h1 {
+	text-align: center;
+}
+
+.main .info {
+	display: flex;
+	column-gap: 60px;
+}
+
+.main .info .border-img {
+	background-color: white;
+	width: 300px; 
+	height: 340px;
+	border-radius: 30px;
+}
+
+img {
+	width: 300px; 
+	height: 340px; 
+	border-radius: 30px;
+}
+
+.main .info p {
+	text-align: justify;
+	color: #333;
+	font-size: 16px;
+	line-height: 2;
+} */
+
+.main .berita {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	justify-items: center;
+	row-gap: 15px; 
+	column-gap: 15px; 
+	padding: 5px;
+	margin-bottom: 20px;
+	/* height: calc(100vh - 80px - 68px); */
+}
+
+.main .berita .card {
+	background-color: white;
+	width: 310px; /* Sesuaikan lebar kartu */
+	height: 320px;
+	box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.4);
+	border-radius: 5px;
+	/* padding: 8px; */
+}
+
+.main .berita .card:hover {
+	transform: scale(1.05);
+}
+
+.main .berita img {
+	width: 310px;
+	height: 170px;
+	border-radius: 5px;
+}
+
+.main .berita .card .info {
+	color: black;
+	padding: 8px;
+	text-align: justify;
+}
+
+.main .berita .card .info h4 {
+	width: 100%;
+	font-size: 12px;
+	margin-bottom: 6px;
+}
+
+
+.main .berita .card .info p {
+	width: 100%;
+	font-size: 9px;
+	margin-bottom: 6px;
+}
+
+.main .berita .card .info .penulis-tanggal {
+	display: flex;
+}
+
+.main .berita .card .info .penulis-tanggal p {
+	width: 100%;
+	font-size: 7px;
+	color: rgba(0, 0, 0, 0.6);
+}
+
+.main .berita .card .info .penulis-tanggal .tanggal {
+	text-align: end;
+}

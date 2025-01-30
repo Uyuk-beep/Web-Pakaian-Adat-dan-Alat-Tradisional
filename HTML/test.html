@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Submenu with Arrow</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .menu {
+            width: 250px;
+        }
+        .menu-item {
+            cursor: pointer;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .menu-item:hover {
+            background-color: #e4e4e4;
+        }
+        .submenu {
+            padding-left: 20px;
+            display: none;
+        }
+        .submenu-item {
+            padding: 8px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            margin-bottom: 5px;
+        }
+        .submenu-item:hover {
+            background-color: #f9f9f9;
+        }
+        .arrow {
+            display: inline-block;
+            transition: transform 0.3s ease; /* Transisi rotasi halus */
+        }
+        .arrow.down {
+            transform: rotate(90deg); /* Rotasi ke kanan menjadi bawah */
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <div class="menu-item" id="kuesioner-menu">
+            <span>❓ Kuesioner</span>
+            <span class="arrow" id="kuesioner-arrow">▶</span>
+        </div>
+        <div class="submenu" id="kuesioner-submenu">
+            <div class="submenu-item">📋 Evaluasi Dosen</div>
+            <div class="submenu-item">📋 Kuesioner Pelayanan</div>
+        </div>
+    </div>
+
+    <script>
+        const kuesionerMenu = document.getElementById('kuesioner-menu');
+        const kuesionerSubmenu = document.getElementById('kuesioner-submenu');
+        const kuesionerArrow = document.getElementById('kuesioner-arrow');
+
+        kuesionerMenu.addEventListener('click', () => {
+            // Toggle submenu visibility
+            if (kuesionerSubmenu.style.display === 'none' || kuesionerSubmenu.style.display === '') {
+                kuesionerSubmenu.style.display = 'block';
+                kuesionerArrow.classList.add('down'); // Tambahkan kelas untuk rotasi ke bawah
+            } else {
+                kuesionerSubmenu.style.display = 'none';
+                kuesionerArrow.classList.remove('down'); // Kembali ke posisi awal
+            }
+        });
+    </script>
+</body>
+</html>

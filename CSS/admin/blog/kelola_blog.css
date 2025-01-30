@@ -1,0 +1,262 @@
+/* Basic Reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	text-decoration: none;
+	/* border: 1px solid blue; */
+}
+
+/* Google Font */
+.poppins {
+	font-family: "Poppins", sans-serif;
+}
+
+body {
+	overflow-x: hidden;
+	letter-spacing: 2px;
+}
+
+/* Setting Grid Container */
+.container {
+	display: grid;
+	grid-template-areas:
+		"navbar navbar"
+		"sidebar main";
+	grid-template-rows: 80px calc(100vh - 80px);
+	grid-template-columns: 240px calc(100vw - 240px);
+}
+
+/*  - - - - - - - - - - HALAMAN NAVBAR - - - - - - - - - - */
+.navbar {
+	grid-area: navbar;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 20px;
+	background: linear-gradient(90deg, #000000, #666666);
+}
+
+.navbar h1 {
+	margin-left: 14px;
+	font-size: 16px;
+	font-weight: 800; /* Extra bold */
+	font-style: italic;
+	letter-spacing: 4px;
+	background: linear-gradient(90deg, #ff0004, #ebff00, #ffaa06);
+
+	/* memastikan bahwa gradasi hanya mempengaruhi area teks. */
+	-webkit-background-clip: text;
+
+	/* membuat teks transparan sehingga latar belakang gradien muncul pada teks. */
+	-webkit-text-fill-color: transparent;
+}
+
+.navbar .menu {
+	display: flex;
+	gap: 60px;
+}
+
+.navbar .menu .admin {
+	display: flex;
+	align-items: center;
+	height: 60px;
+	color: white;
+	text-decoration: none;
+	padding: 5px 30px;
+	font-size: 16px;
+	letter-spacing: 2px;
+	font-weight: 600; /* Extra boldv*/
+	font-style: italic;
+	border-radius: 24px;
+	cursor: pointer;
+}
+
+.navbar .menu .admin:hover {
+	background-color: #d9d9d9;
+	color: #000000;
+}
+
+/*  - - - - - - - - - - HALAMAN SIDEBAR - - - - - - - - - - */
+.sidebar {
+	background: linear-gradient(to bottom, #000000, #666666);
+}
+
+.sidebar .menu {
+	grid-area: sidebar;
+	display: flex;
+	flex-direction: column;
+	row-gap: 10px;
+}
+
+.sidebar .menu a {
+	display: flex;
+	align-items: center;
+	height: 60px;
+	color: white;
+	text-decoration: none;
+	padding: 5px 30px;
+	margin-right: 4px;
+	font-size: 16px;
+	letter-spacing: 2px;
+	font-weight: 600; /* Extra boldv*/
+	font-style: italic;
+	border-radius: 10px;
+}
+
+.sidebar .menu a:hover,
+.sidebar .menu .active {
+	background-color: #d9d9d9;
+	color: #000000;
+}
+
+.sidebar .menu a.kelola-blog {
+	margin-left: 20px;
+	height: 40px;
+	background-color: #d9d9d988;
+	color: #000000;
+}
+
+/*  - - - - - - - - - - HALAMAN MAIN - - - - - - - - - - */
+
+.main {
+	grid-area: main;
+	background-color: #d9d9d9;
+	padding: 20px 30px;
+}
+
+/* Kelola Admin */
+.main .kelola-admin-atau-logout.hide {
+	display: none;
+} 
+
+.main .kelola-admin-atau-logout {
+	position: absolute;
+	display: flex;
+	background: linear-gradient(to bottom, #000000, #666666);
+	right: 10px;
+	top: 0;
+	margin-top: 90px;
+	column-gap: 20px;
+	border-radius: 10px;
+	padding: 5px 10px;
+	margin-right: 20px;
+}
+
+.main .kelola-admin-atau-logout a {
+	color: white;
+	font-style: italic;
+	padding: 10px 15px;
+	border-radius: 10px;
+}
+.main .kelola-admin-atau-logout a:hover {
+	background-color: #d9d9d9;
+	color: #000000;
+}
+
+.main .card {
+	background-color: white;
+	height: calc(100vh - 80px - 60px);
+	padding: 20px 40px;
+	border-radius: 20px;
+}
+
+.main .card .judul-dan-tambah {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.main .card .judul-dan-tambah a {
+	background-color: orange;
+	color: white;
+	padding: 10px 15px;
+	border-radius: 20px;
+}
+
+.main .card .judul-dan-tambah a:hover {
+	transform: scale(1.05);
+}
+
+.main .card .judul-dan-tambah a i {
+	font-size: 20px;
+}
+
+.main .card .border {
+	border: 1px solid black;
+	border-radius: 20px;
+	padding: 15px 35px;
+	margin-top: 20px;
+	height: calc(100vh - 80px - 100px - 60px);
+	overflow-y: auto;
+}
+
+table,
+tr,
+th,
+td {
+	border-collapse: collapse;
+	text-align: center;
+}
+
+table {
+	width: 100%;
+}
+
+table tr {
+	height: 60px;
+}
+
+table tr th {
+	font-style: italic;
+	font-size: 12px;
+}
+
+table tr td {
+	font-size: 8px;
+}
+
+table tr td img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-top: 5px;
+}
+
+
+table tr:first-child {
+	border-bottom: 1px solid black;
+}
+
+table tr th:nth-child(1),
+table tr td:nth-child(1) {
+	width: 80px;
+}
+
+table tr th:nth-child(3),
+table tr td:nth-child(3) {
+	width: 190px;
+}
+
+table tr td a {
+	color: white;
+	padding: 5px 10px;
+	border-radius: 20px;
+	font-size: 8px;
+}
+
+table tr td a:hover {
+	transform: scale(1.05);
+}
+
+table tr td .ubah {
+	background-color: blue;
+}
+
+table tr td .hapus {
+	background-color: red;
+}
+
+table tr td a i {
+	font-size: 10px;
+}
